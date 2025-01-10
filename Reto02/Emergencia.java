@@ -5,13 +5,13 @@ public class Emergencia {
     private final String tipo;
     private final String ubicacion;
     private final int nivelGravedad; // 1 Bajo, 2 Medio , 3 Alto
-    private final int tiempoResouesta;
+    private final int tiempoRespuesta;
 
     public Emergencia(String tipo, String ubicacion, int nivelGravedad, int tiempoResouesta) {
         this.tipo = tipo;
         this.ubicacion = ubicacion;
         this.nivelGravedad = nivelGravedad;
-        this.tiempoResouesta = tiempoResouesta;
+        this.tiempoRespuesta = tiempoResouesta;
     }
 
     public String getTipo() {
@@ -27,13 +27,13 @@ public class Emergencia {
     }
 
     public int getTiempoResouesta() {
-        return tiempoResouesta;
+        return tiempoRespuesta;
     }
 
     @Override
     public String toString() {
         return "Emergencia [tipo=" + tipo + ", ubicacion=" + ubicacion + ", nivelGravedad=" + nivelGravedad
-                + ", tiempoResouesta=" + tiempoResouesta + "]";
+                + ", tiempoResouesta=" + tiempoRespuesta + "]";
     }
 
     
