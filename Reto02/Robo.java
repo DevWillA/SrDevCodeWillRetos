@@ -3,7 +3,7 @@ package Reto02;
 public class Robo extends Emergencia implements Responder{
 
     private SistemaEmergencias sistemaEmergencias; 
-    int policiasAsignadas = 0;
+    int policiasAsignados = 0;
 
     public Robo(String ubicacion, int nivelGravedad, int tiempoRespuesta, SistemaEmergencias sistemaEmergencias) {
         super("Robo", ubicacion, nivelGravedad, tiempoRespuesta);
@@ -28,20 +28,20 @@ public class Robo extends Emergencia implements Responder{
         // Asignación de recursos basada en la gravedad
         switch (getNivelGravedad()) {
             case 1: // Gravedad baja
-                policiasAsignadas = 1; 
+                policiasAsignados = 1; 
                 break;
             case 2: // Gravedad media
-                policiasAsignadas = 3; 
+                policiasAsignados = 3; 
                 break;
             case 3: // Gravedad alta
-                policiasAsignadas = 5; 
+                policiasAsignados = 5; 
                 break;
         }
 
         // Verificamos si hay suficientes 
-        if (policiasDisponibles >= policiasAsignadas) {
-            sistemaEmergencias.asignarRecurso("Policia", policiasAsignadas);
-            System.out.println(policiasAsignadas + " Policias asignadas a la emergencia.");
+        if (policiasDisponibles >= policiasAsignados) {
+            sistemaEmergencias.asignarRecurso("Policia", policiasAsignados);
+            System.out.println(policiasAsignados + " Policias asignados a la emergencia.");
         } else {
             System.out.println("No hay suficientes Policias disponibles.");
         }
@@ -75,8 +75,8 @@ public class Robo extends Emergencia implements Responder{
         Thread liberarRecursos = new Thread(() -> {
             try {
                 Thread.sleep(tiempoTotal * 1000);  // Simulamos el tiempo total (en segundos)
-                sistemaEmergencias.liberarRecurso("Policias", policiasAsignadas);                  
-                System.out.println("Policias liberadas después de la emergencia.");
+                sistemaEmergencias.liberarRecurso("Policia", policiasAsignados);                  
+                //System.out.println("Policias liberadas después de la emergencia.");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -84,6 +84,11 @@ public class Robo extends Emergencia implements Responder{
 
         // Iniciar el hilo
         liberarRecursos.start();
+    }
+
+
+    public int getPoliciasAsignados() {
+        return policiasAsignados;
     }
 
 }

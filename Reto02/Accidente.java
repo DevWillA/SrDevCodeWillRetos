@@ -76,7 +76,7 @@ public class Accidente extends Emergencia implements Responder {
             try {
                 Thread.sleep(tiempoTotal * 1000);  // Simulamos el tiempo total (en segundos)
                 sistemaEmergencias.liberarRecurso("Ambulancias", ambulanciaAsignadas);                  
-                System.out.println("Ambulancias liberadas después de la emergencia.");
+                //System.out.println("Ambulancias liberadas después de la emergencia.");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -84,6 +84,11 @@ public class Accidente extends Emergencia implements Responder {
 
         // Iniciar el hilo
         liberarRecursos.start();
+    }
+
+
+    public int getAmbulanciasAsignadas() {
+        return ambulanciaAsignadas;
     }
 
 

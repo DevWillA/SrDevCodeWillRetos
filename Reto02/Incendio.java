@@ -77,7 +77,7 @@ public class Incendio extends Emergencia implements Responder{
             try {
                 Thread.sleep(tiempoTotal * 1000);  // Simulamos el tiempo total (en segundos)
                 sistemaEmergencias.liberarRecurso("Bomberos", bomberosAsignados );  // Liberamos los bomberos asignados
-                System.out.println("Bomberos liberados después de la emergencia de incendio.");
+                //System.out.println("Bomberos liberados después de la emergencia de incendio.");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -85,6 +85,11 @@ public class Incendio extends Emergencia implements Responder{
 
         // Iniciar el hilo
         liberarRecursos.start();
+    }
+
+
+    public int getBomberosAsignados() {
+        return bomberosAsignados;
     }
 
 }
