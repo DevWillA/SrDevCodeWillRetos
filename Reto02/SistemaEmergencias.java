@@ -93,27 +93,42 @@ public class SistemaEmergencias {
     }
 
     // Atender emergencia
-    // Atender emergencia
     private void atenderEmergencia(Scanner scanner) {
+        if (emergencias.isEmpty()) {
+            System.out.println("No hay emergencias pendientes por atender.");
+            return;
+        }
+    
         System.out.println("Seleccione una emergencia para atender:");
         for (int i = 0; i < emergencias.size(); i++) {
             System.out.println((i + 1) + ". " + emergencias.get(i).getTipo() + " en " + emergencias.get(i).getUbicacion());
         }
+    
         int emergenciaSeleccionada = scanner.nextInt() - 1;
+    
+        // Validar si el índice ingresado es válido
+        if (emergenciaSeleccionada < 0 || emergenciaSeleccionada >= emergencias.size()) {
+            System.out.println("Selección inválida. Intenta de nuevo.");
+            return;
+        }
+    
         Emergencia emergencia = emergencias.get(emergenciaSeleccionada);
-
+    
         if (emergencia instanceof Incendio) {
             ((Incendio) emergencia).asignarBomberos();
-            ((Incendio) emergencia).liberarBomberos(); 
+            ((Incendio) emergencia).liberarBomberos();
         } else if (emergencia instanceof Accidente) {
             ((Accidente) emergencia).asignarAmbulancias();
-            ((Accidente) emergencia).liberarAmbulancias(); 
+            ((Accidente) emergencia).liberarAmbulancias();
         } else if (emergencia instanceof Robo) {
             ((Robo) emergencia).asignarPolicia();
-            ((Robo) emergencia).liberarPolicia(); 
+            ((Robo) emergencia).liberarPolicia();
         }
-
-        System.out.println("Recursos asignados a la emergencia.");
+    
+        System.out.println("Recursos asignados y emergencia atendida.");
+        // Eliminar la emergencia de la lista
+        emergencias.remove(emergenciaSeleccionada);
+        System.out.println("La emergencia ha sido eliminada del sistema.");
     }
 
     // Mostrar estadísticas
