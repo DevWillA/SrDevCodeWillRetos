@@ -42,7 +42,9 @@ public class Incendio extends Emergencia implements Responder{
         // Verificamos si hay suficientes bomberos disponibles
         if (bomberosDisponibles >= bomberosAsignados) {
             sistemaEmergencias.asignarRecurso("Bomberos", bomberosAsignados);
+            System.out.println("----------------- Emergencia en Proceso -----------------");
             System.out.println(bomberosAsignados + " bomberos asignados a la emergencia de incendio.");
+            System.out.println("---------------------------------------------------------");
         } else {
             System.out.println("No hay suficientes bomberos disponibles.");
         }

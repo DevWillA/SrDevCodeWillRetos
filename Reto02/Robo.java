@@ -41,7 +41,9 @@ public class Robo extends Emergencia implements Responder{
         // Verificamos si hay suficientes 
         if (policiasDisponibles >= policiasAsignados) {
             sistemaEmergencias.asignarRecurso("Policia", policiasAsignados);
+            System.out.println("----------------- Emergencia en Proceso -----------------");
             System.out.println(policiasAsignados + " Policias asignados a la emergencia.");
+            System.out.println("---------------------------------------------------------");
         } else {
             System.out.println("No hay suficientes Policias disponibles.");
         }

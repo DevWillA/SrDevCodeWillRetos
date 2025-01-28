@@ -18,7 +18,7 @@ public class SistemaEmergencias {
 
         // Inicializar los recursos
         recursosDisponibles.put("Bomberos", 10);
-        recursosDisponibles.put("Ambulancias", 5);
+        recursosDisponibles.put("Ambulancias", 7);
         recursosDisponibles.put("Policia", 20);
 
         // Inicializar los recursos gastados
@@ -30,7 +30,9 @@ public class SistemaEmergencias {
 
     // Menú de opciones
     public void menu() {
-        System.out.println("Bienvenido al Sistema de Emegercias");
+        System.out.println("---------------------------------------------------------");
+        System.out.println("---------- Bienvenido al Sistema de Emegercias ----------");
+        System.out.println("---------------------------------------------------------");
         Scanner scanner = new Scanner(System.in);
         int opcion;
         do {
@@ -66,6 +68,8 @@ public class SistemaEmergencias {
 
     // Registrar emergencia
     private void registrarEmergencia(Scanner scanner) {
+        System.out.println("---------------------------------------------------------");
+        System.out.println("------------------ Registar Emergencia ------------------");
         System.out.println("Tipos de emergencia disponibles: Incendio, Accidente, Robo");
         System.out.print("Selecciona el tipo de emergencia: ");
         String tipo = scanner.next();
@@ -98,15 +102,18 @@ public class SistemaEmergencias {
         emergencias.add(emergencia);
         emergenciasTotales.add(emergencia);
         emergencia.mostrarResumen();
-        System.out.println("Emergencia registrada con éxito.");
+        System.out.println("----------- Emergencia registrada con éxito. ------------");
+        System.out.println("---------------------------------------------------------");
     }
 
     // Mostrar estado de los recursos disponibles
     private void mostrarRecursos() {
-        System.out.println("Estado de los recursos disponibles:");
+        System.out.println("---------------------------------------------------------");
+        System.out.println("--------- Estado de los recursos disponibles -----------");
         for (Map.Entry<String, Integer> entry : recursosDisponibles.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
+        System.out.println("---------------------------------------------------------");
     }
 
     // Atender emergencia
@@ -122,7 +129,8 @@ public class SistemaEmergencias {
         System.out.println("Seleccione una emergencia para atender:");
         for (int i = 0; i < emergencias.size(); i++) {
             System.out.println(
-                    (i + 1) + ". " + emergencias.get(i).getTipo() + " en " + emergencias.get(i).getUbicacion() + " Nivel Gravedad " + emergencias.get(i).getNivelGravedad());
+                    (i + 1) + ". " + emergencias.get(i).getTipo() + " en " + emergencias.get(i).getUbicacion()
+                            + " Nivel Gravedad " + emergencias.get(i).getNivelGravedad());
         }
 
         int emergenciaSeleccionada = scanner.nextInt() - 1;
@@ -152,8 +160,6 @@ public class SistemaEmergencias {
             ((Robo) emergencia).liberarPolicia();
         }
 
-
-
         // Eliminar la emergencia de la lista
         emergencias.remove(emergenciaSeleccionada);
         // System.out.println("La emergencia ha sido eliminada del sistema.");
@@ -171,41 +177,40 @@ public class SistemaEmergencias {
 
     // Mostrar estadísticas
     private void mostrarEstadisticas() {
-        
+
+        System.out.println("---------------------------------------------------------");
+
         if (emergenciasTotales.isEmpty()) {
             System.out.println("No hay emergencias registradas.");
+            System.out.println("---------------------------------------------------------");
             return;
         } else {
-            System.out.println("Estadísticas de la jornada:");
-            System.out.println("Total de emergencias atendidas: " + emergenciasTotales.size());}
-       
+            System.out.println("-------------- Estadísticas de la jornada: -------------");
+            System.out.println("Total de emergencias atendidas: " + emergenciasTotales.size());
+        }
 
         // Mostrar tiempo promedio de respuesta por tipo de emergencia
         System.out.println("\nTiempo promedio de respuesta por tipo de emergencia:");
         for (Map.Entry<String, Integer> entry : tiempoRespuestaPorTipo.entrySet()) {
             String tipo = entry.getKey();
             int tiempoTotal = entry.getValue();
-            long count = emergencias.stream().filter(e -> e.getTipo().equals(tipo)).count();
+            long count = emergenciasTotales.stream().filter(e -> e.getTipo().equals(tipo)).count();
             int tiempoPromedio = (int) (tiempoTotal / count);
             System.out.println(tipo + ": " + tiempoPromedio + " minutos");
         }
 
         // Mostrar recursos gastados vs disponibles
-        System.out.println("\nRecursos gastados vs. recursos disponibles:");
+        System.out.println("\nRecursos utilizados vs. recursos disponibles:");
         for (Map.Entry<String, Integer> entry : recursosGastados.entrySet()) {
             String recurso = entry.getKey();
             int recursosGastados = entry.getValue();
             int recursosDisponibles = this.recursosDisponibles.get(recurso);
-            System.out.println(recurso + " - Gastados: " + recursosGastados + ", Disponibles: " + recursosDisponibles);
+            System.out
+                    .println(recurso + " - Utilizados: " + recursosGastados + ", Disponibles: " + recursosDisponibles);
         }
-    }
 
-    // Mostrar estadísticas
-    // private void mostrarEstadisticas() {
-    // System.out.println("Estadísticas de la jornada:");
-    // System.out.println("Total de emergencias atendidas: " + emergencias.size());
-    // Otros cálculos de estadísticas como tiempo promedio, recursos usados, etc.
-    // }
+        System.out.println("---------------------------------------------------------");
+    }
 
     public int getRecursosDisponibles(String tipoRecurso) {
         return recursosDisponibles.getOrDefault(tipoRecurso, 0);
@@ -216,13 +221,14 @@ public class SistemaEmergencias {
         int recursosRestantes = recursosDisponibles.get(tipoRecurso) - cantidad; // Restar la cantidad de recursos
                                                                                  // asignados
         recursosDisponibles.put(tipoRecurso, recursosRestantes);
-        //System.out.println(cantidad + " " + tipoRecurso + "(s) asignado(s).");
+        // System.out.println(cantidad + " " + tipoRecurso + "(s) asignado(s).");
     }
 
     public void liberarRecurso(String tipoRecurso, int cantidad) {
         int recursosRestantes = recursosDisponibles.get(tipoRecurso) + cantidad; // Sumamos los recursos liberados
         recursosDisponibles.put(tipoRecurso, recursosRestantes);
         System.out.println();
+        System.out.println("----------------- Emergencia Atendida -----------------");
         System.out.println(cantidad + " " + tipoRecurso + "(s) liberado(s).");
     }
 }

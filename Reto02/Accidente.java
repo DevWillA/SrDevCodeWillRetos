@@ -6,7 +6,7 @@ public class Accidente extends Emergencia implements Responder {
     int ambulanciaAsignadas = 0;
 
     public Accidente(String ubicacion, int nivelGravedad, int tiempoRespuesta, SistemaEmergencias sistemaEmergencias) {
-        super("Accidente Vehicular", ubicacion, nivelGravedad, tiempoRespuesta);
+        super("Accidente", ubicacion, nivelGravedad, tiempoRespuesta);
         this.sistemaEmergencias = sistemaEmergencias;
     }
 
@@ -41,7 +41,9 @@ public class Accidente extends Emergencia implements Responder {
         // Verificamos si hay suficientes 
         if (ambulanciasDisponibles >= ambulanciaAsignadas) {
             sistemaEmergencias.asignarRecurso("Ambulancias", ambulanciaAsignadas);
+            System.out.println("----------------- Emergencia en Proceso -----------------");
             System.out.println(ambulanciaAsignadas + " ambulancias asignadas a la emergencia.");
+            System.out.println("---------------------------------------------------------");
         } else {
             System.out.println("No hay suficientes ambulancias disponibles.");
         }

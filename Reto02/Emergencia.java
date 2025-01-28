@@ -73,10 +73,6 @@ public class Emergencia {
         System.out.println("Tiempo de respuesta: " + tiempoRespuesta + " minutos");
     }
 
-    //@Override
-    //public String toString() {
-   //     return "Emergencia [tipo=" + tipo + ", ubicacion=" + ubicacion + ", nivelGravedad=" + nivelGravedad
-   //             + ", tiempoResouesta=" + tiempoRespuesta + "]";
-   // }
+
 
 }
