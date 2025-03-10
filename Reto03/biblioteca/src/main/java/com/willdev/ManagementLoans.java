@@ -15,14 +15,14 @@ public class ManagementLoans {
         this.loan = new ArrayList<>();
     }
 
-    public void addLoans(String idUser, String idBook) throws BookNotFoundException, UserNotFoundException {
+    public void addLoans(String idUser, String idBook) throws NoSuchElementException, UserNotFoundException {
 
         try {
 
             var book = books.findBook(idBook);
             var user = users.findUser(idUser);
-        } catch (BookNotFoundException e) {
-            throw new BookNotFoundException("El libro no existe");
+        } catch (NoSuchElementException e) {
+            throw new NoSuchElementException("El libro no existe");
         } catch (UserNotFoundException e) {
             throw new UserNotFoundException("El usuario no existe");
         }

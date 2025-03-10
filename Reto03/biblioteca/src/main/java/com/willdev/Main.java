@@ -19,7 +19,7 @@ public class Main {
             loans.addLoans("2", "2");
             loans.addLoans("3", "3");
             loans.addLoans("5", "1");
-        } catch (BookNotFoundException e) {
+        } catch (NoSuchElementException e) {
             System.out.println(e.getMessage());
         } catch (UserNotFoundException e) {
             System.out.println(e.getMessage());

@@ -27,7 +27,7 @@ public class ManagementBooks {
                 return book;
             }
         }
-        throw new BookNotFoundException("El libro con el id " + id + " no existe");
+        throw new NoSuchElementException("El libro con el id " + id + " no existe");
     }
 
 
