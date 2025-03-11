@@ -10,17 +10,28 @@ public class ManagementLoans {
     private ManagementUsers users;
 
     public ManagementLoans(ManagementBooks books, ManagementUsers users) {
+        this.loan = new ArrayList<>();
         this.books = books;
         this.users = users;
-        this.loan = new ArrayList<>();
     }
 
     public void addLoans(String idUser, String idBook) throws NoSuchElementException, UserNotFoundException {
 
+        Users user = users.findUser(idUser);
+        Books book = books.findBook(idBook);
+
+        for (Loans existingLoan : this.loan) {
+            if (existingLoan.getBook().getId().equals(idBook)) {
+                throw new IllegalStateException(
+                        "El libro '" + book.getTitle() + "' ya está prestado por el usuario " +
+                                existingLoan.getUser().getName() + " (ID: " + existingLoan.getUser().getId() + ")");
+            }
+        }
+
         try {
 
-            var book = books.findBook(idBook);
-            var user = users.findUser(idUser);
+            var book1 = books.findBook(idBook);
+            var user1 = users.findUser(idUser);
         } catch (NoSuchElementException e) {
             throw new NoSuchElementException("El libro no existe");
         } catch (UserNotFoundException e) {
@@ -36,21 +47,33 @@ public class ManagementLoans {
 
         }
 
-        var loan = new Loans(idUser, idBook);
+        var loan = new Loans(user, book);
         this.loan.add(loan);
+
+    }
+
+    public Loans returLoans(String idUser, String idBook) {
+
+        for (Loans loan : this.loan) {
+            if (loan.getUser().getId().equals(idUser) && loan.getBook().getId().equals(idBook)) {
+                this.loan.remove(loan);
+                return loan;
+            }
+        }
+        throw new NoSuchElementException("El usuario con el id " + idUser + " no tiene prestamos");
 
     }
 
     public Loans getLoans(String idUser) {
 
-        var user = users.findUser(idUser);
+        Users user = users.findUser(idUser);
 
         for (Loans loan : this.loan) {
-            if (loan.getIdUser().equals(idUser)) {
+            if (loan.getUser().getId().equals(idUser)) { // ✅ Compara con el objeto usuario
                 return loan;
             }
         }
-        return null;
+        throw new NoSuchElementException("El usuario con el id " + idUser + " no tiene prestamos");
 
     }
 

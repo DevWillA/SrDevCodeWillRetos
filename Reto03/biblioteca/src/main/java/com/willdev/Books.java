@@ -31,4 +31,9 @@ public class Books {
         throw new NoSuchElementException("El libro con el id " + id + " no existe");
     }
 
+    @Override
+    public String toString() {
+        return "Books [id=" + id + ", owner=" + owner + ", title=" + title + "]";
+    }
+
 }

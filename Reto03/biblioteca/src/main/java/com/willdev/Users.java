@@ -28,4 +28,10 @@ public class Users {
         throw new UserNotFoundException("El usuario con el id " + id + " no existe");
     }
 
+    @Override
+    public String toString() {
+        return "Users [id=" + id + ", name=" + name + "]";
+    }
+
+
 }
