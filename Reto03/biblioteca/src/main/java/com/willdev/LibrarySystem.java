@@ -68,7 +68,7 @@ public class LibrarySystem {
                     System.out.println("Cerrando sistema...");
                     break;
                 default:
-                    log.debug("Marco una opcion no valida");
+                    log.debug("Marco una opcion no valida" + opcion);
                     System.out.println("Opción no válida");
             }
         } while (opcion != 7);

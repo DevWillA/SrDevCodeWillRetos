@@ -1,0 +1,9 @@
+2025-03-11 16:11:16 [main] INFO  com.willdev.Main - Iniciando la aplicacion
+2025-03-11 16:11:16 [main] INFO  com.willdev.Main - Ingreso al menu
+2025-03-11 16:11:19 [main] DEBUG com.willdev.Main - Registrar Libro
+2025-03-11 16:11:21 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-03-11 16:11:21 [main] INFO  com.willdev.Main - El titulo del libro es: q
+2025-03-11 16:11:22 [main] INFO  com.willdev.Main - El autor del libro es: q
+2025-03-11 16:11:22 [main] INFO  com.willdev.Main - Registrando el libro
+2025-03-11 16:11:24 [main] DEBUG com.willdev.Main - Salio del Menu
+2025-03-11 16:11:24 [main] INFO  com.willdev.Main - Finalizando la aplicacion
