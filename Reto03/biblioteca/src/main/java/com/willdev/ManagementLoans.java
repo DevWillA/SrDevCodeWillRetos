@@ -69,7 +69,7 @@ public class ManagementLoans {
         Users user = users.findUser(idUser);
 
         for (Loans loan : this.loan) {
-            if (loan.getUser().getId().equals(idUser)) { // ✅ Compara con el objeto usuario
+            if (loan.getUser().getId().equals(idUser)) { 
                 return loan;
             }
         }
