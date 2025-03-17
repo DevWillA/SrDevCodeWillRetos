@@ -54,7 +54,7 @@ public class ManagementLoans {
 
     }
 
-    public Loans returLoans(String idUser, String idBook) {
+    public Loans returLoans(int idUser, int idBook) {
 
         for (Loans loan : this.loan) {
             if (loan.getUser().getId().equals(idUser) && loan.getBook().getId().equals(idBook)) {
@@ -62,7 +62,7 @@ public class ManagementLoans {
                 return loan;
             }
         }
-        throw new NoSuchElementException("El usuario con el id " + idUser + " no tiene prestamos");
+        throw new NoSuchElementException("El usuario con el id " + i + " no tiene prestamos");
 
     }
 
@@ -78,5 +78,6 @@ public class ManagementLoans {
         throw new NoSuchElementException("El usuario con el id " + idUser + " no tiene prestamos");
 
     }
+
 
 }
