@@ -6,10 +6,10 @@ import java.time.format.DateTimeFormatter;
 public class Loan {
 
     private User user;
-    private Books book;
+    private Book book;
     private LocalDateTime loanDate;
 
-    public Loan(User user, Books book) {
+    public Loan(User user, Book book) {
         this.user = user;
         this.book = book;
         this.loanDate = LocalDateTime.now(); 
@@ -19,7 +19,7 @@ public class Loan {
         return user;
     }
 
-    public Books getBook() {
+    public Book getBook() {
         return book;
     }
     public LocalDateTime getLoanDate() {

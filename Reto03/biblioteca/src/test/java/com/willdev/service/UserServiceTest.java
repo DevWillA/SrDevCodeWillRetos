@@ -4,26 +4,29 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.willdev.exception.UserNotFoundException;
+import com.willdev.model.User;
+
 public class UserServiceTest {
-    private ManagementUsers userService;
+    private UserService userService;
 
     @BeforeEach
     void setUp() {
-        userService = new ManagementUsers();
+        userService = new UserService();
     }
 
     @Test
     void testAddUser() {
-        userService.addUser("1", "Alice");
-        Users user = userService.findUser("1");
+        userService.addUser("1", "Alice","sss");
+        User user = userService.findUser("1");
         assertNotNull(user);
         assertEquals("Alice", user.getName());
     }
 
     @Test
     void testAddAndFindUser_Success() {
-        userService.addUser("1", "Alice");
-        Users user = userService.findUser("1");
+        userService.addUser("1", "Alice","sss");
+        User user = userService.findUser("1");
         assertNotNull(user);
         assertEquals("Alice", user.getName());
     }

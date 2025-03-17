@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.willdev.exception.NoSuchElementException;
+import com.willdev.model.Book;
+
 public class BookServiceTest {
     private BookService bookService;
 
@@ -17,7 +20,7 @@ public class BookServiceTest {
     @Test
     void testAddBook() {
         bookService.addBook("1", "Java Programming", "John Doe");
-        Books book = bookService.findBook("1");
+        Book book = bookService.findBook("1");
         assertNotNull(book);
         assertEquals("Java Programming", book.getTitle());
         assertEquals("John Doe", book.getOwner());
@@ -26,7 +29,7 @@ public class BookServiceTest {
     @Test
     void testAddAndFindBook_Success() {
         bookService.addBook("1", "Java Programming", "John Doe");
-        Books book = bookService.findBook("1");
+        Book book = bookService.findBook("1");
         assertNotNull(book);
         assertEquals("Java Programming", book.getTitle());
     }
@@ -42,7 +45,7 @@ public class BookServiceTest {
     @Test
     void testFindBookById() {
         bookService.addBook("2", "Python Basics", "Alice Smith");
-        Books book = bookService.findBook("2");
+        Book book = bookService.findBook("2");
         assertNotNull(book);
         assertEquals("Python Basics", book.getTitle());
     }

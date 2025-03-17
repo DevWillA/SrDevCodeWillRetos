@@ -3,6 +3,12 @@ package com.willdev.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.willdev.exception.NoSuchElementException;
+import com.willdev.exception.UserNotFoundException;
+import com.willdev.model.Book;
+import com.willdev.model.Loan;
+import com.willdev.model.User;
+
 
 public class LoanService {
 
@@ -32,8 +38,8 @@ public class LoanService {
 
         try {
 
-            var book1 = books.findBook(idBook);
-            var user1 = users.findUser(idUser);
+            //var book1 = books.findBook(idBook);
+            //var user1 = users.findUser(idUser);
         } catch (NoSuchElementException e) {
             throw new NoSuchElementException("El libro no existe");
         } catch (UserNotFoundException e) {
@@ -62,13 +68,13 @@ public class LoanService {
                 return loan;
             }
         }
-        throw new NoSuchElementException("El usuario con el id " + i + " no tiene prestamos");
+        throw new NoSuchElementException("El usuario con el id " + idUser + " no tiene prestamos");
 
     }
 
     public Loan getLoan(String idUser) {
 
-        User user = users.findUser(idUser);
+        //User user = users.findUser(idUser);
 
         for (Loan loan : this.loan) {
             if (loan.getUser().getId().equals(idUser)) { 

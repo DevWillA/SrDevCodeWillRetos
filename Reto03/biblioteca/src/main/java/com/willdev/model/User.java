@@ -1,5 +1,7 @@
 package com.willdev.model;
 
+import com.willdev.exception.UserNotFoundException;
+
 public class User {
 
     private String id;

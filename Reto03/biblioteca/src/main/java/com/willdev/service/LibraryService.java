@@ -1,9 +1,15 @@
 package com.willdev.service;
 
-import java.time.format.DateTimeFormatter;
+//import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.willdev.Main;
+import com.willdev.exception.NoSuchElementException;
+import com.willdev.exception.UserNotFoundException;
+import com.willdev.model.Book;
+import com.willdev.model.Loan;
 
 public class LibraryService {
 
@@ -215,7 +221,7 @@ public class LibraryService {
         try {
             System.out.println("----------------------------------------------------");
             Loan loan = loanService.getLoan(idUser);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
             System.out.println(loan);
             log.info("Prestamo encontrado: " + loan);

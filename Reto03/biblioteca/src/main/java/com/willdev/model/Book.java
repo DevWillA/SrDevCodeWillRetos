@@ -1,5 +1,7 @@
 package com.willdev.model;
 
+import com.willdev.exception.NoSuchElementException;
+
 public class Book {
 
     private String id;

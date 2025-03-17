@@ -3,6 +3,9 @@ package com.willdev.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.willdev.exception.UserNotFoundException;
+import com.willdev.model.User;
+
 public class UserService {
 
 
