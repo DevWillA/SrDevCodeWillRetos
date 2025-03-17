@@ -54,7 +54,7 @@ public class ManagementLoans {
 
     }
 
-    public Loans returLoans(int idUser, int idBook) {
+    public Loans returLoans(String idUser, String idBook) {
 
         for (Loans loan : this.loan) {
             if (loan.getUser().getId().equals(idUser) && loan.getBook().getId().equals(idBook)) {
