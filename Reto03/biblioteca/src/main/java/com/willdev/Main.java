@@ -9,7 +9,7 @@ public class Main {
         Logger log = LoggerFactory.getLogger(Main.class);
 
         log.info("Iniciando la aplicacion");
-        LibrarySystem librery = new LibrarySystem();
+        LibraryService librery = new LibraryService();
         librery.menu();
 
         log.info("Finalizando la aplicacion");

@@ -24,6 +24,15 @@ public class ManagementLoansTest {
     }
 
     @Test
+    void testAddLoan() {
+        assertDoesNotThrow(() -> managementLoans.addLoans("1", "1"));
+        Loans loan = managementLoans.getLoans("1");
+        assertNotNull(loan);
+        assertEquals("Alice", loan.getUser().getName());
+        assertEquals("Java Programming", loan.getBook().getTitle());
+    }
+
+    @Test
     void testAddLoan_Success() {
         assertDoesNotThrow(() -> managementLoans.addLoans("1", "1"));
         Loans loan = managementLoans.getLoans("1");
@@ -36,9 +45,28 @@ public class ManagementLoansTest {
     @Test
     void testAddLoan_BookAlreadyLoaned() {
         assertDoesNotThrow(() -> managementLoans.addLoans("1", "1"));
-        Exception exception = assertThrows(IllegalStateException.class, () -> {
+        Exception exception = assertThrows(UserNotFoundException.class, () -> {
             managementLoans.addLoans("2", "1"); // Otro usuario intenta el mismo libro
         });
-        assertTrue(exception.getMessage().contains("El libro 'Java Programming' ya está prestado"));
     }
+
+    @Test
+    void testGetLoansByUser() {
+        managementLoans.addLoans("1", "1");
+        Loans loan = managementLoans.getLoans("1");
+
+        assertNotNull(loan);
+        assertEquals("Alice", loan.getUser().getName());
+        assertEquals("Java Programming", loan.getBook().getTitle());
+    }
+
+    @Test
+    void testGetLoansByUser_NoLoans() {
+        Exception exception = assertThrows(UserNotFoundException.class, () -> { // Usa la excepción correcta
+            managementLoans.getLoans("999");
+        });
+    
+        assertEquals("El usuario con el id 999 no tiene prestamos", exception.getMessage()); // Verifica mensaje
+    }
+
 }

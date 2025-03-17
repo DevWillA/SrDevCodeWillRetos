@@ -5,7 +5,7 @@ import java.util.Scanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class LibrarySystem {
+public class LibraryService {
 
     Logger log = LoggerFactory.getLogger(Main.class);
 
@@ -13,7 +13,7 @@ public class LibrarySystem {
     private ManagementUsers managementUsers;
     private ManagementLoans managementLoans;
 
-    public LibrarySystem() {
+    public LibraryService() {
         this.managementBooks = new ManagementBooks();
         this.managementUsers = new ManagementUsers();
         this.managementLoans = new ManagementLoans(managementBooks, managementUsers);

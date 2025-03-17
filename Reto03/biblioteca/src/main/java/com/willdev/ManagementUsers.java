@@ -29,6 +29,6 @@ public class ManagementUsers {
                 return user;
             }
         }
-        throw new UserNotFoundException("El ususario con el id " + id + " no existe");
+        throw new UserNotFoundException("El usuario con el id " + id + " no existe");
     }
 }
