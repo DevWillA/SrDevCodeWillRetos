@@ -12,7 +12,7 @@ public class Main {
 
         log.info("Iniciando la aplicacion");
         LibraryService librery = new LibraryService();
-        librery.menu();
+        librery.menuLibrary();
 
         log.info("Finalizando la aplicacion");
         System.out.println("Gracias por usar nuestro servicio");

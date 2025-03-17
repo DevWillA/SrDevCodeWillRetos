@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.NoSuchElementException;
+import com.willdev.exception.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,7 +29,7 @@ public class LoanServiceTest {
     @Test
     void testAddLoan() {
         assertDoesNotThrow(() -> loanService.addLoan("1", "1"));
-        Loan loan = loanService.getLoan("1");
+        Loan loan = loanService.getLoanByUser("1");
         assertNotNull(loan);
         assertEquals("Alice", loan.getUser().getName());
         assertEquals("Java Programming", loan.getBook().getTitle());
@@ -38,7 +38,7 @@ public class LoanServiceTest {
     @Test
     void testAddLoan_Success() {
         assertDoesNotThrow(() -> loanService.addLoan("1", "1"));
-        Loan loan = loanService.getLoan("1");
+        Loan loan = loanService.getLoanByUser("1");
         assertNotNull(loan);
         assertEquals("Alice", loan.getUser().getName());
         assertEquals("Java Programming", loan.getBook().getTitle());
@@ -49,7 +49,7 @@ public class LoanServiceTest {
     @Test
     void testGetLoansByUser() {
         loanService.addLoan("1", "1");
-        Loan loan = loanService.getLoan("1");
+        Loan loan = loanService.getLoanByUser("1");
 
         assertNotNull(loan);
         assertEquals("Alice", loan.getUser().getName());
@@ -59,7 +59,7 @@ public class LoanServiceTest {
     @Test
     void testGetLoansByUser_NoLoans() {
         Exception exception = assertThrows(NoSuchElementException.class, () -> { // Usa la excepción correcta
-            loanService.getLoan("999");
+            loanService.getLoanByUser("999");
         });
     
         assertEquals("El usuario con el id 999 no tiene prestamos", exception.getMessage()); // Verifica mensaje

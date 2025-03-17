@@ -10,15 +10,15 @@ public class BookService {
 
     private List<Book> books;
 
-    public BookService(){
+    public BookService() {
 
         books = new ArrayList<>();
     }
 
-    public void addBook (String id, String title, String owner) {
-            
-            var book = new Book(id, title, owner);
-            books.add(book);
+    public void addBook(String id, String title, String owner) {
+
+        var book = new Book(id, title, owner);
+        books.add(book);
 
     }
 
@@ -42,6 +42,24 @@ public class BookService {
         throw new NoSuchElementException("El libro con el id " + id + " no existe, no se puede eliminar");
     }
 
+    public void updateBookTitle(String id, String title) {
+        for (var book : books) {
+            if (book.getId().equals(id)) {
+                book.setTitle(title);
+                return;
+            }
+        }
+        throw new NoSuchElementException("El libro con el id " + id + " no existe, no se puede actualizar titulo");
+    }
 
+    public void updateBookOwner(String id, String owner) {
+        for (var book : books) {
+            if (book.getId().equals(id)) {
+                book.setOwner(owner);
+                return;
+            }
+        }
+        throw new NoSuchElementException("El libro con el id " + id + " no existe, no se puede actualizar autor");
+    }
 
 }

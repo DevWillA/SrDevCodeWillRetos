@@ -70,7 +70,7 @@ public class LoanService {
 
     }
 
-    public Loan getLoan(String idUser) {
+    public Loan getLoanByUser(String idUser) {
 
 
         for (Loan loan : this.loan) {
@@ -79,6 +79,18 @@ public class LoanService {
             }
         }
         throw new NoSuchElementException("El usuario con el id " + idUser + " no tiene prestamos");
+
+    }
+
+    public Loan getLoanByBook(String idBook) {
+
+
+        for (Loan loan : this.loan) {
+            if (loan.getBook().getId().equals(idBook)) { 
+                return loan;
+            }
+        }
+        throw new NoSuchElementException("El Lirbro con el id " + idBook + " no tiene prestamos");
 
     }
 

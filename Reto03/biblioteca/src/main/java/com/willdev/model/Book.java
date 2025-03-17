@@ -26,6 +26,14 @@ public class Book {
         return owner;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
     public Book findBook(String id) {
         if (this.id.equals(id)) {
             return this;
