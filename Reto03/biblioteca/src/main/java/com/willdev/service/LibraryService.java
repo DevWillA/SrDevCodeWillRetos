@@ -57,7 +57,7 @@ public class LibraryService {
                     break;
                 case 5:
                     log.debug("Consultar Prestamo por Usuario");
-                    ConsultLoansbyUser(scanner);
+                    ConsultLoanbyUser(scanner);
                     break;
                 case 6:
                     log.debug("Regresar Prestamo");
@@ -116,7 +116,7 @@ public class LibraryService {
 
         try {
             log.info("Buscando el libro");
-            Books book = bookService.findBook(idBook);
+            Book book = bookService.findBook(idBook);
             System.out.println("Libro encontrado: " + book);
             System.out.println("----------------------------------------------------");
             log.info("Libro encontrado: " + book);
@@ -140,6 +140,10 @@ public class LibraryService {
         String nameUser = scanner.next();
         log.info("El nombre del usuario es: " + nameUser);
 
+        System.out.print("Indique el Correo del Usuario: ");
+        String emailUser = scanner.next();
+        log.info("El email del usuario es: " + emailUser);
+
         try {
             if (userService.findUser(idUser) != null) {
                 log.error("El Usuario con el id " + idUser + " ya existe");
@@ -149,7 +153,7 @@ public class LibraryService {
         } catch (Exception e) {
 
             log.info("Registrando el usuario");
-            userService.addUser(idUser, nameUser);
+            userService.addUser(idUser, nameUser, emailUser);
             System.out.println("----------- Usuario registrado con éxito. ------------");
             System.out.println("------------------------------------------------------");
 
@@ -170,7 +174,7 @@ public class LibraryService {
 
         try {
             log.info("Registrando el prestamo");
-            loanService.addLoans(idUser, idBook);
+            loanService.addLoan(idUser, idBook);
             log.info("Prestamo registrado con exito idUser " + idUser+", idBook "+ idBook);
             System.out.println("----------- Prestamo registrado con éxito. -----------");
             System.out.println("------------------------------------------------------");
@@ -201,7 +205,7 @@ public class LibraryService {
 
     }
 
-    private void ConsultLoansbyUser(Scanner scanner) {
+    private void ConsultLoanbyUser(Scanner scanner) {
         System.out.println("---------------------------------------------------------");
         System.out.println("----------- Consultar un Prestamo Por Usuario -----------");
         System.out.print("Indique el Id Del Usuario: ");
@@ -210,7 +214,7 @@ public class LibraryService {
 
         try {
             System.out.println("----------------------------------------------------");
-            Loans loan = loanService.getLoans(idUser);
+            Loan loan = loanService.getLoan(idUser);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
             System.out.println(loan);
@@ -238,7 +242,7 @@ public class LibraryService {
         log.info("El id del libro es: " + idBook);
 
         try {
-            loanService.returLoans(idUser, idBook);
+            loanService.returBook(idUser, idBook);
             log.info("Regreso registrado con exito idUser " + idUser+", idBook "+ idBook);
             System.out.println("----------- Regreso registrado con éxito. -----------");
             System.out.println("------------------------------------------------------");

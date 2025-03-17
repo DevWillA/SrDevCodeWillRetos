@@ -7,22 +7,22 @@ import java.util.List;
 public class LoanService {
 
 
-    private List<Loans> loan;
-    private ManagementBooks books;
-    private ManagementUsers users;
+    private List<Loan> loan;
+    private BookService books;
+    private UserService users;
 
-    public LoanService(ManagementBooks books, ManagementUsers users) {
+    public LoanService(BookService books, UserService users) {
         this.loan = new ArrayList<>();
         this.books = books;
         this.users = users;
     }
 
-    public void addLoans(String idUser, String idBook) throws NoSuchElementException, UserNotFoundException {
+    public void addLoan(String idUser, String idBook) throws NoSuchElementException, UserNotFoundException {
 
-        Users user = users.findUser(idUser);
-        Books book = books.findBook(idBook);
+        User user = users.findUser(idUser);
+        Book book = books.findBook(idBook);
 
-        for (Loans existingLoan : this.loan) {
+        for (Loan existingLoan : this.loan) {
             if (existingLoan.getBook().getId().equals(idBook)) {
                 throw new IllegalStateException(
                         "El libro '" + book.getTitle() + "' ya está prestado por el usuario " +
@@ -49,14 +49,14 @@ public class LoanService {
 
         }
 
-        var loan = new Loans(user, book);
+        var loan = new Loan(user, book);
         this.loan.add(loan);
 
     }
 
-    public Loans returLoans(String idUser, String idBook) {
+    public Loan returBook(String idUser, String idBook) {
 
-        for (Loans loan : this.loan) {
+        for (Loan loan : this.loan) {
             if (loan.getUser().getId().equals(idUser) && loan.getBook().getId().equals(idBook)) {
                 this.loan.remove(loan);
                 return loan;
@@ -66,11 +66,11 @@ public class LoanService {
 
     }
 
-    public Loans getLoans(String idUser) {
+    public Loan getLoan(String idUser) {
 
-        Users user = users.findUser(idUser);
+        User user = users.findUser(idUser);
 
-        for (Loans loan : this.loan) {
+        for (Loan loan : this.loan) {
             if (loan.getUser().getId().equals(idUser)) { 
                 return loan;
             }

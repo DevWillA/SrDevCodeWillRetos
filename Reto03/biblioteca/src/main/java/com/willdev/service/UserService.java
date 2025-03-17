@@ -6,7 +6,7 @@ import java.util.List;
 public class UserService {
 
 
-    private List<Users> users;
+    private List<User> users;
 
     public UserService(){
 
@@ -14,15 +14,15 @@ public class UserService {
 
     }
 
-    public void addUser(String id, String name) {
+    public void addUser(String id, String name, String email) {
 
-        var user = new Users(id, name);
+        var user = new User(id, name, email);
         users.add(user);
 
     }
 
 
-    public Users findUser(String id) {
+    public User findUser(String id) {
 
         for (var user : users) {
             if (user.getId().equals(id)) {
@@ -30,5 +30,36 @@ public class UserService {
             }
         }
         throw new UserNotFoundException("El usuario con el id " + id + " no existe");
+    }
+
+
+    public void deleteUser(String id) {
+        for (var user : users) {
+            if (user.getId().equals(id)) {
+                users.remove(user);
+                return;
+            }
+        }
+        throw new UserNotFoundException("El usuario con el id " + id + " no existe, no se puede eliminar");
+    }
+
+    public void updateUserName(String id, String name) {
+        for (var user : users) {
+            if (user.getId().equals(id)) {
+                user.setName(name);
+                return;
+            }
+        }
+        throw new UserNotFoundException("El usuario con el id " + id + " no existe, no se puede actualizar nombre");
+    }
+
+    public void updateUserEmail(String id, String email) {
+        for (var user : users) {
+            if (user.getId().equals(id)) {
+                user.setEmail(email);
+                return;
+            }
+        }
+        throw new UserNotFoundException("El usuario con el id " + id + " no existe, no se puede actualizar correo");
     }
 }

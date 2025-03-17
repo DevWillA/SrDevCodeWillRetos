@@ -33,7 +33,9 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Books [id=" + id + ", owner=" + owner + ", title=" + title + "]";
+        return"id Libro es: " + id + "\n" +
+               "Titulo: " + title + "\n" +
+               "Autor: " + owner;
     }
 
 }

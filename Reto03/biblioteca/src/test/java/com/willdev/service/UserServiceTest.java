@@ -1,4 +1,4 @@
-package com.willdev;
+package com.willdev.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;

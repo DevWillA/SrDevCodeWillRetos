@@ -5,7 +5,7 @@ import java.util.List;
 
 public class BookService {
 
-    private List<Books> books;
+    private List<Book> books;
 
     public BookService(){
 
@@ -14,12 +14,12 @@ public class BookService {
 
     public void addBook (String id, String title, String owner) {
             
-            var book = new Books(id, title, owner);
+            var book = new Book(id, title, owner);
             books.add(book);
 
     }
 
-    public Books findBook(String id) {
+    public Book findBook(String id) {
 
         for (var book : books) {
             if (book.getId().equals(id)) {
@@ -28,6 +28,17 @@ public class BookService {
         }
         throw new NoSuchElementException("El libro con el id " + id + " no existe");
     }
+
+    public void deleteBook(String id) {
+        for (var book : books) {
+            if (book.getId().equals(id)) {
+                books.remove(book);
+                return;
+            }
+        }
+        throw new NoSuchElementException("El libro con el id " + id + " no existe, no se puede eliminar");
+    }
+
 
 
 }
