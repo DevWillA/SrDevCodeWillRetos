@@ -1,6 +1,5 @@
 package com.willdev.service;
 
-//import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -221,7 +220,6 @@ public class LibraryService {
         try {
             System.out.println("----------------------------------------------------");
             Loan loan = loanService.getLoan(idUser);
-            //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
             System.out.println(loan);
             log.info("Prestamo encontrado: " + loan);

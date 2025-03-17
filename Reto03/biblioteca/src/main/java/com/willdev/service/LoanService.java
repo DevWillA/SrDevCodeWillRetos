@@ -38,8 +38,6 @@ public class LoanService {
 
         try {
 
-            //var book1 = books.findBook(idBook);
-            //var user1 = users.findUser(idUser);
         } catch (NoSuchElementException e) {
             throw new NoSuchElementException("El libro no existe");
         } catch (UserNotFoundException e) {
@@ -74,7 +72,6 @@ public class LoanService {
 
     public Loan getLoan(String idUser) {
 
-        //User user = users.findUser(idUser);
 
         for (Loan loan : this.loan) {
             if (loan.getUser().getId().equals(idUser)) { 

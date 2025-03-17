@@ -36,7 +36,7 @@ public class UserServiceTest {
         Exception exception = assertThrows(UserNotFoundException.class, () -> {
             userService.findUser("999");
         });
-        assertEquals("El ususario con el id 999 no existe", exception.getMessage());
+        assertEquals("El usuario con el id 999 no existe", exception.getMessage());
     }
 
     @Test
@@ -44,6 +44,6 @@ public class UserServiceTest {
         Exception exception = assertThrows(UserNotFoundException.class, () -> {
             userService.findUser("999");
         });
-        assertEquals("El ususario con el id 999 no existe", exception.getMessage());
+        assertEquals("El usuario con el id 999 no existe", exception.getMessage());
     }
 }

@@ -19,19 +19,21 @@ public class BookServiceTest {
 
     @Test
     void testAddBook() {
-        bookService.addBook("1", "Java Programming", "John Doe");
+        // Given - When
+        bookService.addBook("1", "Java", "John");
+        // Then
         Book book = bookService.findBook("1");
         assertNotNull(book);
-        assertEquals("Java Programming", book.getTitle());
-        assertEquals("John Doe", book.getOwner());
+        assertEquals("Java", book.getTitle());
+        assertEquals("John", book.getOwner());
     }
 
     @Test
     void testAddAndFindBook_Success() {
-        bookService.addBook("1", "Java Programming", "John Doe");
+        bookService.addBook("1", "Java", "John");
         Book book = bookService.findBook("1");
         assertNotNull(book);
-        assertEquals("Java Programming", book.getTitle());
+        assertEquals("Java", book.getTitle());
     }
 
     @Test
@@ -44,10 +46,10 @@ public class BookServiceTest {
 
     @Test
     void testFindBookById() {
-        bookService.addBook("2", "Python Basics", "Alice Smith");
+        bookService.addBook("2", "Python", "Alice");
         Book book = bookService.findBook("2");
         assertNotNull(book);
-        assertEquals("Python Basics", book.getTitle());
+        assertEquals("Python", book.getTitle());
     }
 
     @Test

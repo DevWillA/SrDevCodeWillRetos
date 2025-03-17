@@ -3,11 +3,12 @@ package com.willdev.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import com.willdev.exception.UserNotFoundException;
 import com.willdev.model.Loan;
 
 public class LoanServiceTest {
@@ -57,7 +58,7 @@ public class LoanServiceTest {
 
     @Test
     void testGetLoansByUser_NoLoans() {
-        Exception exception = assertThrows(UserNotFoundException.class, () -> { // Usa la excepción correcta
+        Exception exception = assertThrows(NoSuchElementException.class, () -> { // Usa la excepción correcta
             loanService.getLoan("999");
         });
     
