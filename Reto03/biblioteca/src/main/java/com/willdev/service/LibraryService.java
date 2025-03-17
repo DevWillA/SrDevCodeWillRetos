@@ -1,4 +1,4 @@
-package com.willdev;
+package com.willdev.service;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -9,14 +9,14 @@ public class LibraryService {
 
     Logger log = LoggerFactory.getLogger(Main.class);
 
-    private ManagementBooks managementBooks;
-    private ManagementUsers managementUsers;
-    private ManagementLoans managementLoans;
+    private BookService bookService;
+    private UserService userService;
+    private LoanService loanService;
 
     public LibraryService() {
-        this.managementBooks = new ManagementBooks();
-        this.managementUsers = new ManagementUsers();
-        this.managementLoans = new ManagementLoans(managementBooks, managementUsers);
+        this.bookService = new BookService();
+        this.userService = new UserService();
+        this.loanService = new LoanService(bookService, userService);
     }
 
     // Menú de opciones
@@ -91,7 +91,7 @@ public class LibraryService {
         log.info("El autor del libro es: " + ownerBook);
 
         try {
-            if (managementBooks.findBook(idBook) != null) {
+            if (bookService.findBook(idBook) != null) {
                 log.error("El libro con el id " + idBook + " ya existe");
                 System.out.println("El libro con el id " + idBook + " ya existe");
                 return;
@@ -99,7 +99,7 @@ public class LibraryService {
         } catch (Exception e) {
 
             log.info("Registrando el libro");
-            managementBooks.addBook(idBook, nameBook, ownerBook);
+            bookService.addBook(idBook, nameBook, ownerBook);
             System.out.println("----------- Libro registrado con éxito. ------------");
             System.out.println("----------------------------------------------------");
 
@@ -116,7 +116,7 @@ public class LibraryService {
 
         try {
             log.info("Buscando el libro");
-            Books book = managementBooks.findBook(idBook);
+            Books book = bookService.findBook(idBook);
             System.out.println("Libro encontrado: " + book);
             System.out.println("----------------------------------------------------");
             log.info("Libro encontrado: " + book);
@@ -141,7 +141,7 @@ public class LibraryService {
         log.info("El nombre del usuario es: " + nameUser);
 
         try {
-            if (managementUsers.findUser(idUser) != null) {
+            if (userService.findUser(idUser) != null) {
                 log.error("El Usuario con el id " + idUser + " ya existe");
                 System.out.println("El Usuario con el id " + idUser + " ya existe");
                 return;
@@ -149,7 +149,7 @@ public class LibraryService {
         } catch (Exception e) {
 
             log.info("Registrando el usuario");
-            managementUsers.addUser(idUser, nameUser);
+            userService.addUser(idUser, nameUser);
             System.out.println("----------- Usuario registrado con éxito. ------------");
             System.out.println("------------------------------------------------------");
 
@@ -170,7 +170,7 @@ public class LibraryService {
 
         try {
             log.info("Registrando el prestamo");
-            managementLoans.addLoans(idUser, idBook);
+            loanService.addLoans(idUser, idBook);
             log.info("Prestamo registrado con exito idUser " + idUser+", idBook "+ idBook);
             System.out.println("----------- Prestamo registrado con éxito. -----------");
             System.out.println("------------------------------------------------------");
@@ -210,7 +210,7 @@ public class LibraryService {
 
         try {
             System.out.println("----------------------------------------------------");
-            Loans loan = managementLoans.getLoans(idUser);
+            Loans loan = loanService.getLoans(idUser);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
             System.out.println(loan);
@@ -238,7 +238,7 @@ public class LibraryService {
         log.info("El id del libro es: " + idBook);
 
         try {
-            managementLoans.returLoans(idUser, idBook);
+            loanService.returLoans(idUser, idBook);
             log.info("Regreso registrado con exito idUser " + idUser+", idBook "+ idBook);
             System.out.println("----------- Regreso registrado con éxito. -----------");
             System.out.println("------------------------------------------------------");

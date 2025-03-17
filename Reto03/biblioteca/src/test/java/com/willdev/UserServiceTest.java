@@ -4,26 +4,26 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class ManagementUsersTest {
-    private ManagementUsers managementUsers;
+public class UserServiceTest {
+    private ManagementUsers userService;
 
     @BeforeEach
     void setUp() {
-        managementUsers = new ManagementUsers();
+        userService = new ManagementUsers();
     }
 
     @Test
     void testAddUser() {
-        managementUsers.addUser("1", "Alice");
-        Users user = managementUsers.findUser("1");
+        userService.addUser("1", "Alice");
+        Users user = userService.findUser("1");
         assertNotNull(user);
         assertEquals("Alice", user.getName());
     }
 
     @Test
     void testAddAndFindUser_Success() {
-        managementUsers.addUser("1", "Alice");
-        Users user = managementUsers.findUser("1");
+        userService.addUser("1", "Alice");
+        Users user = userService.findUser("1");
         assertNotNull(user);
         assertEquals("Alice", user.getName());
     }
@@ -31,7 +31,7 @@ public class ManagementUsersTest {
     @Test
     void testFindUser_NotFound() {
         Exception exception = assertThrows(UserNotFoundException.class, () -> {
-            managementUsers.findUser("999");
+            userService.findUser("999");
         });
         assertEquals("El ususario con el id 999 no existe", exception.getMessage());
     }
@@ -39,7 +39,7 @@ public class ManagementUsersTest {
     @Test
     void testFindUserById_NotFound() {
         Exception exception = assertThrows(UserNotFoundException.class, () -> {
-            managementUsers.findUser("999");
+            userService.findUser("999");
         });
         assertEquals("El ususario con el id 999 no existe", exception.getMessage());
     }

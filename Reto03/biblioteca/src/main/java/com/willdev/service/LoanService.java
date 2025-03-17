@@ -1,17 +1,17 @@
-package com.willdev;
+package com.willdev.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ManagementLoans {
+public class LoanService {
 
 
     private List<Loans> loan;
     private ManagementBooks books;
     private ManagementUsers users;
 
-    public ManagementLoans(ManagementBooks books, ManagementUsers users) {
+    public LoanService(ManagementBooks books, ManagementUsers users) {
         this.loan = new ArrayList<>();
         this.books = books;
         this.users = users;

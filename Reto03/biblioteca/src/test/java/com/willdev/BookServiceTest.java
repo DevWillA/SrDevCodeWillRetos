@@ -6,18 +6,18 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class ManagementBooksTest {
-    private ManagementBooks managementBooks;
+public class BookServiceTest {
+    private BookService bookService;
 
     @BeforeEach
     void setUp() {
-        managementBooks = new ManagementBooks();
+        bookService = new BookService();
     }
 
     @Test
     void testAddBook() {
-        managementBooks.addBook("1", "Java Programming", "John Doe");
-        Books book = managementBooks.findBook("1");
+        bookService.addBook("1", "Java Programming", "John Doe");
+        Books book = bookService.findBook("1");
         assertNotNull(book);
         assertEquals("Java Programming", book.getTitle());
         assertEquals("John Doe", book.getOwner());
@@ -25,8 +25,8 @@ public class ManagementBooksTest {
 
     @Test
     void testAddAndFindBook_Success() {
-        managementBooks.addBook("1", "Java Programming", "John Doe");
-        Books book = managementBooks.findBook("1");
+        bookService.addBook("1", "Java Programming", "John Doe");
+        Books book = bookService.findBook("1");
         assertNotNull(book);
         assertEquals("Java Programming", book.getTitle());
     }
@@ -34,15 +34,15 @@ public class ManagementBooksTest {
     @Test
     void testFindBook_NotFound() {
         Exception exception = assertThrows(NoSuchElementException.class, () -> {
-            managementBooks.findBook("999");
+            bookService.findBook("999");
         });
         assertEquals("El libro con el id 999 no existe", exception.getMessage());
     }
 
     @Test
     void testFindBookById() {
-        managementBooks.addBook("2", "Python Basics", "Alice Smith");
-        Books book = managementBooks.findBook("2");
+        bookService.addBook("2", "Python Basics", "Alice Smith");
+        Books book = bookService.findBook("2");
         assertNotNull(book);
         assertEquals("Python Basics", book.getTitle());
     }
@@ -50,7 +50,7 @@ public class ManagementBooksTest {
     @Test
     void testFindBookById_NotFound() {
         Exception exception = assertThrows(NoSuchElementException.class, () -> {
-            managementBooks.findBook("999");
+            bookService.findBook("999");
         });
         assertEquals("El libro con el id 999 no existe", exception.getMessage());
     }

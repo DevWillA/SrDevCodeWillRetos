@@ -1,12 +1,12 @@
-package com.willdev;
+package com.willdev.model;
 
-public class Users {
+public class User {
 
     private String id;
     private String name;
 
     
-    public Users(String id, String name) {
+    public User(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -21,7 +21,7 @@ public class Users {
         return name;
     }
 
-    public Users findUser(String id) {
+    public User findUser(String id) {
         if (this.id.equals(id)) {
             return this;
         }

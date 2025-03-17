@@ -1,13 +1,13 @@
-package com.willdev;
+package com.willdev.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManagementBooks {
+public class BookService {
 
     private List<Books> books;
 
-    public ManagementBooks(){
+    public BookService(){
 
         books = new ArrayList<>();
     }

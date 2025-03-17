@@ -1,14 +1,14 @@
-package com.willdev;
+package com.willdev.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManagementUsers {
+public class UserService {
 
 
     private List<Users> users;
 
-    public ManagementUsers(){
+    public UserService(){
 
         users = new ArrayList<>();
 
