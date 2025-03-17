@@ -1,12 +1,14 @@
-package com.willdev;
+package com.willdev.model;
 
-public class Books {
+import com.willdev.exception.NoSuchElementException;
+
+public class Book {
 
     private String id;
     private String title;
     private String owner;
 
-    public Books(String id, String title, String owner) {
+    public Book(String id, String title, String owner) {
         this.id = id;
         this.title = title;
         this.owner = owner;
@@ -24,7 +26,15 @@ public class Books {
         return owner;
     }
 
-    public Books findBook(String id) {
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public Book findBook(String id) {
         if (this.id.equals(id)) {
             return this;
         }
@@ -33,7 +43,9 @@ public class Books {
 
     @Override
     public String toString() {
-        return "Books [id=" + id + ", owner=" + owner + ", title=" + title + "]";
+        return"id Libro es: " + id + "\n" +
+               "Titulo: " + title + "\n" +
+               "Autor: " + owner;
     }
 
 }

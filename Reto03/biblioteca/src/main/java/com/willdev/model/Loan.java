@@ -1,25 +1,25 @@
-package com.willdev;
+package com.willdev.model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Loans {
+public class Loan {
 
-    private Users user;
-    private Books book;
+    private User user;
+    private Book book;
     private LocalDateTime loanDate;
 
-    public Loans(Users user, Books book) {
+    public Loan(User user, Book book) {
         this.user = user;
         this.book = book;
         this.loanDate = LocalDateTime.now(); 
     }
 
-    public Users getUser() {
+    public User getUser() {
         return user;
     }
 
-    public Books getBook() {
+    public Book getBook() {
         return book;
     }
     public LocalDateTime getLoanDate() {
