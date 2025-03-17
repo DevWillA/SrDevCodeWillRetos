@@ -94,5 +94,9 @@ public class LoanService {
 
     }
 
+    public List<Loan> getLoans() {
+        return this.loan;
+    }
+
 
 }

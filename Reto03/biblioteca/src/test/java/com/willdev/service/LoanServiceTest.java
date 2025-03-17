@@ -45,10 +45,12 @@ public class LoanServiceTest {
         loanService.addLoan("1", "1");
 
         Loan loan = loanService.getLoanByUser("1");
+        var loans = loanService.getLoans();
 
         assertNotNull(loan);
         assertEquals(testUser, loan.getUser());
         assertEquals(testBook, loan.getBook());
+        assertEquals(1, loans.size());
     }
 
     @Test

@@ -34,4 +34,8 @@ public class Loan {
                "Libro: " + book.getTitle() + " (ID: " + book.getId() + ") Autor: " + book.getOwner();
     }
 
+    public Integer size() {
+       
+    }
+
 }
