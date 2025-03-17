@@ -38,7 +38,7 @@ public class LoanServiceTest {
     }
 
     @Test
-    public void testAddLoan_Success() {
+    public void testAddLoanSuccesss() {
         when(userService.findUser("1")).thenReturn(testUser);
         when(bookService.findBook("1")).thenReturn(testBook);
 

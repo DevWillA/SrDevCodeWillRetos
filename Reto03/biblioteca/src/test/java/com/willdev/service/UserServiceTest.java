@@ -24,7 +24,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void testAddAndFindUser_Success() {
+    void testAddAndFindUserSuccess() {
         userService.addUser("1", "Alice","sss");
         User user = userService.findUser("1");
         assertNotNull(user);
@@ -32,7 +32,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void testFindUser_NotFound() {
+    void testFindUserNotFound() {
         Exception exception = assertThrows(UserNotFoundException.class, () -> {
             userService.findUser("999");
         });
@@ -40,7 +40,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void testFindUserById_NotFound() {
+    void testFindUserByIdNotFound() {
         Exception exception = assertThrows(UserNotFoundException.class, () -> {
             userService.findUser("999");
         });

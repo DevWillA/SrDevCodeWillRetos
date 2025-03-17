@@ -29,7 +29,7 @@ public class BookServiceTest {
     }
 
     @Test
-    void testAddAndFindBook_Success() {
+    void testAddAndFindBookSuccess() {
         bookService.addBook("1", "Java", "John");
         Book book = bookService.findBook("1");
         assertNotNull(book);
@@ -37,7 +37,7 @@ public class BookServiceTest {
     }
 
     @Test
-    void testFindBook_NotFound() {
+    void testFindBookNotFound() {
         Exception exception = assertThrows(NoSuchElementException.class, () -> {
             bookService.findBook("999");
         });
@@ -53,7 +53,7 @@ public class BookServiceTest {
     }
 
     @Test
-    void testFindBookById_NotFound() {
+    void testFindBookByIdNotFound() {
         Exception exception = assertThrows(NoSuchElementException.class, () -> {
             bookService.findBook("999");
         });
