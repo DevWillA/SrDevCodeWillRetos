@@ -14,6 +14,11 @@ public class Book {
         this.owner = owner;
     }
 
+    public Book(String id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
     public String getId() {
         return id;
     }

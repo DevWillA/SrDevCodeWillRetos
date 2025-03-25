@@ -62,4 +62,8 @@ public class BookService {
         throw new NoSuchElementException("El libro con el id " + id + " no existe, no se puede actualizar autor");
     }
 
+    public List<Book> getAllBooks() {
+        return books;
+    }
+
 }

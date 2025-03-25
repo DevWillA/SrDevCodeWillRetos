@@ -1,5 +1,6 @@
 package com.willdev.service;
 
+import java.util.List;
 import java.util.Scanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -215,6 +216,10 @@ public class LibraryService {
         } while (opcion != 5);
     }
 
+      public List<Book> getAllBooks() {
+        return bookService.getAllBooks();
+    }
+
     private void updateEmailUser(Scanner scanner) {
         System.out.println("---------------------------------------------------------");
         System.out.println("------------------ Actualizar Correo Usuario ------------");
@@ -332,7 +337,7 @@ public class LibraryService {
 
     }
 
-    private void getUser(Scanner scanner) {
+    public void getUser(Scanner scanner) {
         System.out.println("---------------------------------------------------------");
         System.out.println("-------------------- Consultar Usuario -------------------");
         System.out.print("Indique el Id Del Usuario: ");
@@ -426,7 +431,7 @@ public class LibraryService {
     }
 
 
-    private void RegisterBook(Scanner scanner) {
+    public void RegisterBook(Scanner scanner) {
         System.out.println("---------------------------------------------------------");
         System.out.println("--------------------- Registar Libro --------------------");
 
@@ -513,7 +518,7 @@ public class LibraryService {
 
     }
 
-    private void MakeLoan(Scanner scanner) {
+    public void MakeLoan(Scanner scanner) {
         System.out.println("---------------------------------------------------------");
         System.out.println("------------------- Registar Prestamo -------------------");
         System.out.print("Indique el Id Del Usuario: ");

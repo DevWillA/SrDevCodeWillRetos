@@ -15,6 +15,8 @@ public class Loan {
         this.loanDate = LocalDateTime.now(); 
     }
 
+
+
     public User getUser() {
         return user;
     }

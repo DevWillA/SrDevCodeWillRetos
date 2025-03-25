@@ -44,14 +44,7 @@ public class LoanService {
             throw new UserNotFoundException("El usuario no existe");
         }
 
-        if (idUser.isEmpty()) {
-            throw new IllegalArgumentException("El id del usuario no puede estar vacio");
-        }
 
-        if (idBook.isEmpty()) {
-            throw new IllegalArgumentException("El id del libro no puede estar vacio");
-
-        }
 
         var loan = new Loan(user, book);
         this.loan.add(loan);
@@ -90,7 +83,7 @@ public class LoanService {
                 return loan;
             }
         }
-        throw new NoSuchElementException("El Lirbro con el id " + idBook + " no tiene prestamos");
+        throw new NoSuchElementException("El Libro con el id " + idBook + " no tiene prestamos");
 
     }
 

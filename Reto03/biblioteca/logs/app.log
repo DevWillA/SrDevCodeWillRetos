@@ -1,0 +1,105 @@
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - El id del usuario es: 1
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - El id del libro es: 999
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - Registrando el prestamo
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - Prestamo registrado con exito idUser 1, idBook 999
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - El id del usuario es: 999
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - Buscando el usuario
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - El titulo del libro es: Libro1
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - El autor del libro es: Autor1
+2025-03-25 15:25:24 [main] ERROR com.willdev.Main - El libro con el id 1 ya existe
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - Ingreso al menu de libros
+2025-03-25 15:25:24 [main] DEBUG com.willdev.Main - Registrar Libro
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - El titulo del libro es: Libro1
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - El autor del libro es: Autor1
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - Registrando el libro
+2025-03-25 15:25:24 [main] DEBUG com.willdev.Main - Salio del Menu Libros
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - Ingreso al menu de libros
+2025-03-25 15:25:24 [main] DEBUG com.willdev.Main - Actulizar Titulo Libro
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - El titulo del libro es: NuevoTitulo
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - Actualizando el titulo del libro
+2025-03-25 15:25:24 [main] DEBUG com.willdev.Main - Salio del Menu Libros
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - El id del usuario es: 999
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - Registrando el prestamo
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - Prestamo registrado con exito idUser 999, idBook 1
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - El titulo del libro es: Libro1
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - El autor del libro es: Autor1
+2025-03-25 15:25:24 [main] INFO  com.willdev.Main - Registrando el libro
+2025-03-25 15:27:01 [main] INFO  com.willdev.Main - El id del usuario es: 999
+2025-03-25 15:27:01 [main] INFO  com.willdev.Main - Buscando el usuario
+2025-03-25 15:27:20 [main] INFO  com.willdev.Main - El id del usuario es: 999
+2025-03-25 15:27:20 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-03-25 15:27:20 [main] INFO  com.willdev.Main - Registrando el prestamo
+2025-03-25 15:27:20 [main] INFO  com.willdev.Main - Prestamo registrado con exito idUser 999, idBook 1
+2025-03-25 15:28:52 [main] INFO  com.willdev.Main - El id del usuario es: 999
+2025-03-25 15:28:52 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-03-25 15:28:52 [main] INFO  com.willdev.Main - Registrando el prestamo
+2025-03-25 15:28:52 [main] INFO  com.willdev.Main - Prestamo registrado con exito idUser 999, idBook 1
+2025-03-25 15:30:39 [main] INFO  com.willdev.Main - El id del usuario es: 999
+2025-03-25 15:30:39 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-03-25 15:30:39 [main] INFO  com.willdev.Main - Registrando el prestamo
+2025-03-25 15:30:39 [main] INFO  com.willdev.Main - Prestamo registrado con exito idUser 999, idBook 1
+2025-03-25 15:30:57 [main] INFO  com.willdev.Main - El id del usuario es: 999
+2025-03-25 15:30:57 [main] INFO  com.willdev.Main - Buscando el usuario
+2025-03-25 15:30:57 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-03-25 15:30:57 [main] INFO  com.willdev.Main - El titulo del libro es: Libro1
+2025-03-25 15:30:57 [main] INFO  com.willdev.Main - El autor del libro es: Autor1
+2025-03-25 15:30:57 [main] INFO  com.willdev.Main - Registrando el libro
+2025-03-25 15:30:57 [main] INFO  com.willdev.Main - Ingreso al menu de libros
+2025-03-25 15:30:57 [main] DEBUG com.willdev.Main - Actulizar Titulo Libro
+2025-03-25 15:30:57 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-03-25 15:30:57 [main] INFO  com.willdev.Main - El titulo del libro es: NuevoTitulo
+2025-03-25 15:30:57 [main] INFO  com.willdev.Main - Actualizando el titulo del libro
+2025-03-25 15:30:57 [main] DEBUG com.willdev.Main - Salio del Menu Libros
+2025-03-25 15:30:57 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-03-25 15:30:57 [main] INFO  com.willdev.Main - El titulo del libro es: Libro1
+2025-03-25 15:30:57 [main] INFO  com.willdev.Main - El autor del libro es: Autor1
+2025-03-25 15:30:57 [main] ERROR com.willdev.Main - El libro con el id 1 ya existe
+2025-03-25 15:30:57 [main] INFO  com.willdev.Main - Ingreso al menu de libros
+2025-03-25 15:30:57 [main] DEBUG com.willdev.Main - Registrar Libro
+2025-03-25 15:30:57 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-03-25 15:30:57 [main] INFO  com.willdev.Main - El titulo del libro es: Libro1
+2025-03-25 15:30:57 [main] INFO  com.willdev.Main - El autor del libro es: Autor1
+2025-03-25 15:30:57 [main] INFO  com.willdev.Main - Registrando el libro
+2025-03-25 15:30:57 [main] DEBUG com.willdev.Main - Salio del Menu Libros
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - El id del usuario es: 999
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - Buscando el usuario
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - Ingreso al menu de la libreria
+2025-03-25 15:32:38 [main] DEBUG com.willdev.Main - Salio del Menu
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - El titulo del libro es: Libro1
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - El autor del libro es: Autor1
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - Registrando el libro
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - Ingreso al menu de la libreria
+2025-03-25 15:32:38 [main] DEBUG com.willdev.Main - Menu Libros
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - Ingreso al menu de libros
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - Ingreso al menu de libros
+2025-03-25 15:32:38 [main] DEBUG com.willdev.Main - Actulizar Titulo Libro
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - El titulo del libro es: NuevoTitulo
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - Actualizando el titulo del libro
+2025-03-25 15:32:38 [main] DEBUG com.willdev.Main - Salio del Menu Libros
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - Ingreso al menu de la libreria
+2025-03-25 15:32:38 [main] DEBUG com.willdev.Main - Marco una opcion no valida99
+2025-03-25 15:32:38 [main] DEBUG com.willdev.Main - Salio del Menu
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - Ingreso al menu de la libreria
+2025-03-25 15:32:38 [main] DEBUG com.willdev.Main - Menu Prestamos
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - Ingreso al menu de prestamos
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - El titulo del libro es: Libro1
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - El autor del libro es: Autor1
+2025-03-25 15:32:38 [main] ERROR com.willdev.Main - El libro con el id 1 ya existe
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - Ingreso al menu de libros
+2025-03-25 15:32:38 [main] DEBUG com.willdev.Main - Registrar Libro
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - El titulo del libro es: Libro1
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - El autor del libro es: Autor1
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - Registrando el libro
+2025-03-25 15:32:38 [main] DEBUG com.willdev.Main - Salio del Menu Libros
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - Ingreso al menu de la libreria
+2025-03-25 15:32:38 [main] DEBUG com.willdev.Main - Menu Usuarios
+2025-03-25 15:32:38 [main] INFO  com.willdev.Main - Ingreso al menu de usuarios
