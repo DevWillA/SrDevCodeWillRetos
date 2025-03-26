@@ -47,13 +47,13 @@ public class User {
         throw new UserNotFoundException("El usuario con el id " + id + " no existe");
     }
 
-    @Override
-    public String toString() {
-
-        return "id Usuario es: " + id + "\n" +
-               "Nombre: " + name + "\n" +
-               "Email: " + email;
-    }
+    //@Override
+    //public String toString() {
+//
+    //    return "id Usuario es: " + id + "\n" +
+    //           "Nombre: " + name + "\n" +
+    //           "Email: " + email;
+    //}
 
 
 }

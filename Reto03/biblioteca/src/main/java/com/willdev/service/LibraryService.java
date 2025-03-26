@@ -19,6 +19,8 @@ public class LibraryService {
     private UserService userService;
     private LoanService loanService;
 
+    
+
     public LibraryService() {
         this.bookService = new BookService();
         this.userService = new UserService();
@@ -40,7 +42,7 @@ public class LibraryService {
             System.out.println("4. Salir");
             System.out.print("Selecciona una opción: ");
             opcion = scanner.nextInt();
-
+            scanner.nextLine(); 
             switch (opcion) {
                 case 1:
                     log.debug("Menu Usuarios");
@@ -80,10 +82,10 @@ public class LibraryService {
         do {
             System.out.println("1. Agregar un Libro");
             System.out.println("2. Consultar un Libro");
-            System.out.println("4. Actualizar el titulo de un Libro");
-            System.out.println("5. Actualizar el author de un Libro");
-            System.out.println("6. Borrar un Libro");
-            System.out.println("7. Salir");
+            System.out.println("3. Actualizar el titulo de un Libro");
+            System.out.println("4. Actualizar el author de un Libro");
+            System.out.println("5. Borrar un Libro");
+            System.out.println("6. Salir");
             System.out.print("Selecciona una opción: ");
             opcion = scanner.nextInt();
 
@@ -96,19 +98,19 @@ public class LibraryService {
                     log.debug("Consultar Libro");
                     SeeBook(scanner);
                     break;
-                case 4:
+                case 3:
                     log.debug("Actulizar Titulo Libro");
                     updateTitleBook(scanner);
                     break;
-                case 5:
+                case 4:
                     log.debug("Actulizar Author Libro");
                     UpdateOwnerBook(scanner);
                     break;
-                case 6:
+                case 5:
                     log.debug("Borrar Libro");
                     deleteBook(scanner);
                     break;
-                case 7:
+                case 6:
                     log.debug("Salio del Menu Libros");
                     System.out.println("Salio del Menu Libros");
                     System.out.println("------------------------------------------------------");
@@ -117,7 +119,7 @@ public class LibraryService {
                     log.debug("Marco una opcion no valida" + opcion);
                     System.out.println("Opción no válida");
             }
-        } while (opcion != 7);
+        } while (opcion != 6);
     }
 
     // Menú de opciones
@@ -359,7 +361,7 @@ public class LibraryService {
 
     }
 
-    private void deleteBook(Scanner scanner) {
+    public void deleteBook(Scanner scanner) {
         System.out.println("---------------------------------------------------------");
         System.out.println("-------------------- Eliminar Libro ---------------------");
         System.out.print("Indique el Id Del Libro: ");
@@ -459,12 +461,13 @@ public class LibraryService {
             bookService.addBook(idBook, nameBook, ownerBook);
             System.out.println("----------- Libro registrado con éxito. ------------");
             System.out.println("----------------------------------------------------");
+            return;
 
         }
 
     }
 
-    private void SeeBook(Scanner scanner) {
+    public void SeeBook(Scanner scanner) {
         System.out.println("---------------------------------------------------------");
         System.out.println("-------------------- Consultar Libro --------------------");
         System.out.print("Indique el Id Del Libro: ");
@@ -486,7 +489,7 @@ public class LibraryService {
 
     }
 
-    private void RegisterUser(Scanner scanner) {
+    public void RegisterUser(Scanner scanner) {
         System.out.println("---------------------------------------------------------");
         System.out.println("-------------------- Registar Usuario -------------------");
         System.out.print("Indique el Id Del Usuario: ");
@@ -513,6 +516,7 @@ public class LibraryService {
             userService.addUser(idUser, nameUser, emailUser);
             System.out.println("----------- Usuario registrado con éxito. ------------");
             System.out.println("------------------------------------------------------");
+            return;
 
         }
 
@@ -547,17 +551,12 @@ public class LibraryService {
             System.out.println(e.getMessage());
             System.out.println("------------------------------------------------------");
             return;
-        } catch (IllegalArgumentException e) {
-            System.out.println("------------------------------------------------------");
-            log.error("El id Usuario o el Id Libro no pueden estar vacios");
-            System.out.println("El id Usuario o el Id Libro no pueden estar vacios");
-            System.out.println("------------------------------------------------------");
-            return;
-        } catch (IllegalStateException e) {
+        }   catch (IllegalStateException e) {
             System.out.println("------------------------------------------------------");
             log.error("El libro ya esta prestado");
             System.out.println(e.getMessage());
             System.out.println("------------------------------------------------------");
+            return;
         }
 
     }
@@ -575,7 +574,7 @@ public class LibraryService {
         log.info("El id del libro es: " + idBook);
 
         try {
-            loanService.returBook(idUser, idBook);
+            loanService.returnBook(idUser, idBook);
             log.info("Regreso registrado con exito idUser " + idUser + ", idBook " + idBook);
             System.out.println("----------- Regreso registrado con éxito. -----------");
             System.out.println("------------------------------------------------------");

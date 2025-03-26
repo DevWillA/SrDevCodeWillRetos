@@ -24,9 +24,6 @@ public class Loan {
     public Book getBook() {
         return book;
     }
-    public LocalDateTime getLoanDate() {
-        return loanDate;
-    }
 
     @Override
     public String toString() {

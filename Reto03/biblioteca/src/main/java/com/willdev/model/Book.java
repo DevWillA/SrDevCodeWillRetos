@@ -14,10 +14,7 @@ public class Book {
         this.owner = owner;
     }
 
-    public Book(String id, String title) {
-        this.id = id;
-        this.title = title;
-    }
+
 
     public String getId() {
         return id;
@@ -46,11 +43,11 @@ public class Book {
         throw new NoSuchElementException("El libro con el id " + id + " no existe");
     }
 
-    @Override
-    public String toString() {
-        return"id Libro es: " + id + "\n" +
-               "Titulo: " + title + "\n" +
-               "Autor: " + owner;
-    }
+    //@Override
+    //public String toString() {
+    //    return"id Libro es: " + id + "\n" +
+    //           "Titulo: " + title + "\n" +
+    //           "Autor: " + owner;
+    //}
 
 }

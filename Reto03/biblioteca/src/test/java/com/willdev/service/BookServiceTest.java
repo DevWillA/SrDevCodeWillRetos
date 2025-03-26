@@ -3,6 +3,9 @@ package com.willdev.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,124 +22,204 @@ public class BookServiceTest {
 
     @Test
     void testAddBook() {
-        bookService.addBook("1", "Java", "John");
-        Book book = bookService.findBook("1");
-        assertNotNull(book);
-        assertEquals("Java", book.getTitle());
-        assertEquals("John", book.getOwner());
+        bookService.addBook("1", "Java Basics", "Alice");
+        List<Book> books = bookService.getAllBooks();
+        assertEquals(1, books.size());
+        assertEquals("Java Basics", books.get(0).getTitle());
     }
 
     @Test
-    void testAddAndFindBook_Success() {
-        bookService.addBook("1", "Java", "John");
-        Book book = bookService.findBook("1");
-        assertNotNull(book);
-        assertEquals("Java", book.getTitle());
+    void testFindBook() {
+        bookService.addBook("1", "Java Basics", "Alice");
+        bookService.addBook("2", "Advanced Java", "Bob"); // Libro adicional
+
+        Book foundBook = bookService.findBook("1");
+        Book anotherBook = bookService.findBook("2");
+
+        assertNotNull(foundBook);
+        assertEquals("Java Basics", foundBook.getTitle());
+        assertEquals("Alice", foundBook.getOwner());
+
+        assertNotNull(anotherBook);
+        assertEquals("Advanced Java", anotherBook.getTitle());
     }
 
     @Test
-    void testFindBook_NotFound() {
-        Exception exception = assertThrows(NoSuchElementException.class, () -> {
-            bookService.findBook("999");
-        });
-        assertEquals("El libro con el id 999 no existe", exception.getMessage());
+    void testFindBookBookNotExists() {
+        bookService.addBook("1", "Java Basics", "Alice");
+
+        NoSuchElementException exception = assertThrows(NoSuchElementException.class,
+                () -> bookService.findBook("99"));
+
+        assertEquals("El libro con el id 99 no existe", exception.getMessage());
+
+        bookService = new BookService();
+        assertThrows(NoSuchElementException.class,
+                () -> bookService.findBook("1"));
     }
 
     @Test
-    void testFindBookById() {
-        bookService.addBook("2", "Python", "Alice");
-        Book book = bookService.findBook("2");
-        assertNotNull(book);
-        assertEquals("Python", book.getTitle());
-    }
-
-    @Test
-    void testFindBookById_NotFound() {
-        Exception exception = assertThrows(NoSuchElementException.class, () -> {
-            bookService.findBook("999");
-        });
-        assertEquals("El libro con el id 999 no existe", exception.getMessage());
-    }
-
-    @Test
-    void testDeleteBookSuccess() {
-        bookService.addBook("1", "Java", "John");
+    void testDeleteBook() {
+        bookService.addBook("1", "Java Basics", "Alice");
         bookService.deleteBook("1");
-        Exception exception = assertThrows(NoSuchElementException.class, () -> {
-            bookService.findBook("1");
-        });
-        assertEquals("El libro con el id 1 no existe", exception.getMessage());
+        assertThrows(NoSuchElementException.class, () -> bookService.findBook("1"));
     }
 
     @Test
     void testDeleteBookNotFound() {
-        Exception exception = assertThrows(NoSuchElementException.class, () -> {
-            bookService.deleteBook("999");
-        });
-        assertEquals("El libro con el id 999 no existe, no se puede eliminar", exception.getMessage());
+        assertThrows(NoSuchElementException.class, () -> bookService.deleteBook("99"));
     }
 
     @Test
-    void testUpdateBookOwnerSuccess() {
-        bookService.addBook("1", "Java", "John");
-        bookService.updateBookOwner("1", "Alice");
-        Book book = bookService.findBook("1");
-        assertNotNull(book);
-        assertEquals("Alice", book.getOwner());
-    }
+    void testDeleteBookWhenBookExistsShouldRemoveBook() {
+        bookService.addBook("1", "Java Basics", "Alice");
+        bookService.addBook("2", "Advanced Java", "Bob");
 
-    @Test
-    void testUpdateBookOwnerNotFound() {
-        bookService.addBook("1", "Java", "John");
-        Exception exception = assertThrows(NoSuchElementException.class, () -> {
-            bookService.updateBookOwner("2", "Alice");
-        });
-        assertEquals("El libro con el id 2 no existe, no se puede actualizar autor", exception.getMessage());
-    }
+        bookService.deleteBook("1");
 
+        assertThrows(NoSuchElementException.class, () -> bookService.findBook("1"));
 
-    @Test
-    void testUpdateBookTitleSuccess() {
-        bookService.addBook("1", "Java", "John");
-        bookService.updateBookTitle("1", "Java 8");
-        Book book = bookService.findBook("1");
-        assertNotNull(book);
-        assertEquals("Java 8", book.getTitle());
-    }
+        Book remainingBook = bookService.findBook("2");
+        assertNotNull(remainingBook);
+        assertEquals("Advanced Java", remainingBook.getTitle());
 
-    @Test
-    void testUpdateBookTitleNotFound() {
-        bookService.addBook("1", "Java", "John");
-        Exception exception = assertThrows(NoSuchElementException.class, () -> {
-            bookService.updateBookTitle("2", "Java 8");
-        });
-        assertEquals("El libro con el id 2 no existe, no se puede actualizar titulo", exception.getMessage());
-    }
-
-
-    @Test
-    void addBook_ShouldAddBookToList() {
-        bookService.addBook("1", "Title", "Owner");
         assertEquals(1, bookService.getAllBooks().size());
     }
 
     @Test
-    void findBook_ExistingBook_ShouldReturnBook() {
-        bookService.addBook("1", "Title", "Owner");
-        Book found = bookService.findBook("1");
-        assertEquals("1", found.getId());
+    void testDeleteBookWhenBookNotExistsShouldThrowException() {
+        bookService.addBook("1", "Java Basics", "Alice");
+
+        NoSuchElementException exception = assertThrows(NoSuchElementException.class,
+                () -> bookService.deleteBook("99"));
+
+        assertEquals("El libro con el id 99 no existe, no se puede eliminar", exception.getMessage());
+
+        Book existingBook = bookService.findBook("1");
+        assertNotNull(existingBook);
     }
 
     @Test
-    void findBook_NonExistingBook_ShouldThrowException() {
-        assertThrows(NoSuchElementException.class, () -> bookService.findBook("99"));
+    void testDeleteBookWhenListIsEmptyShouldThrowException() {
+        NoSuchElementException exception = assertThrows(NoSuchElementException.class,
+                () -> bookService.deleteBook("1"));
+
+        assertEquals("El libro con el id 1 no existe, no se puede eliminar", exception.getMessage());
     }
 
     @Test
-    void deleteBook_ExistingBook_ShouldRemoveBook() {
-        bookService.addBook("1", "Title", "Owner");
-        bookService.deleteBook("1");
-        assertEquals(0, bookService.getAllBooks().size());
+    void testUpdateBookTitle() {
+        bookService.addBook("1", "Java Basics", "Alice");
+        bookService.updateBookTitle("1", "Advanced Java");
+        assertEquals("Advanced Java", bookService.findBook("1").getTitle());
+    }
+
+    @Test
+    void testUpdateBookTitleNotFound() {
+        assertThrows(NoSuchElementException.class, () -> bookService.updateBookTitle("99", "New Title"));
+    }
+
+    @Test
+    void testUpdateBookTitleWhenBookExistsShouldUpdateTitle() {
+        bookService.addBook("1", "Java Basics", "Alice");
+        bookService.addBook("2", "Python Fundamentals", "Bob");
+
+        bookService.updateBookTitle("1", "Advanced Java");
+
+        assertEquals("Advanced Java", bookService.findBook("1").getTitle());
+
+        assertEquals("Python Fundamentals", bookService.findBook("2").getTitle());
+
+        assertEquals("Alice", bookService.findBook("1").getOwner());
+    }
+
+    @Test
+    void testUpdateBookTitleWhenBookNotExistsShouldThrowException() {
+        bookService.addBook("1", "Java Basics", "Alice");
+
+        NoSuchElementException exception = assertThrows(NoSuchElementException.class,
+                () -> bookService.updateBookTitle("99", "New Title"));
+
+        assertEquals("El libro con el id 99 no existe, no se puede actualizar titulo", exception.getMessage());
+
+        assertEquals("Java Basics", bookService.findBook("1").getTitle());
+    }
+
+    @Test
+    void testUpdateBookTitleWhenListIsEmptyShouldThrowException() {
+        NoSuchElementException exception = assertThrows(NoSuchElementException.class,
+                () -> bookService.updateBookTitle("1", "New Title"));
+
+        assertEquals("El libro con el id 1 no existe, no se puede actualizar titulo", exception.getMessage());
+    }
+
+    @Test
+    void testUpdateBookTitleWithEmptyTitleShouldUpdate() {
+        bookService.addBook("1", "Java Basics", "Alice");
+
+        bookService.updateBookTitle("1", "");
+
+        assertEquals("", bookService.findBook("1").getTitle());
+    }
+
+    @Test
+    void testUpdateBookOwner() {
+        bookService.addBook("1", "Java Basics", "Alice");
+        bookService.updateBookOwner("1", "Bob");
+        assertEquals("Bob", bookService.findBook("1").getOwner());
+    }
+
+    @Test
+    void testUpdateBookOwnerNotFound() {
+        assertThrows(NoSuchElementException.class, () -> bookService.updateBookOwner("99", "Charlie"));
+    }
+
+    @Test
+    void testUpdateBookOwnerWhenBookExistsShouldUpdateOwner() {
+        bookService.addBook("1", "Java Basics", "Alice");
+        bookService.addBook("2", "Python Fundamentals", "Bob");
+
+        bookService.updateBookOwner("1", "Carol");
+
+        assertEquals("Carol", bookService.findBook("1").getOwner());
+
+        assertEquals("Bob", bookService.findBook("2").getOwner());
+
+        assertEquals("Java Basics", bookService.findBook("1").getTitle());
+    }
+
+    @Test
+    void testUpdateBookOwnerWhenBookNotExistsShouldThrowException() {
+        bookService.addBook("1", "Java Basics", "Alice");
+        NoSuchElementException exception = assertThrows(NoSuchElementException.class,
+                () -> bookService.updateBookOwner("99", "Dave"));
+        assertEquals("El libro con el id 99 no existe, no se puede actualizar autor", exception.getMessage());
+        assertEquals("Alice", bookService.findBook("1").getOwner());
+    }
+
+    @Test
+    void testUpdateBookOwnerWhenListIsEmptyShouldThrowException() {
+        NoSuchElementException exception = assertThrows(NoSuchElementException.class,
+                () -> bookService.updateBookOwner("1", "Eve"));
+
+        assertEquals("El libro con el id 1 no existe, no se puede actualizar autor", exception.getMessage());
+    }
+
+    @Test
+    void testUpdateBookOwnerWithEmptyOwnerShouldUpdate() {
+        bookService.addBook("1", "Java Basics", "Alice");
+
+        bookService.updateBookOwner("1", "");
+
+        assertEquals("", bookService.findBook("1").getOwner());
+    }
+
+    @Test
+    void testGetAllBooks() {
+        bookService.addBook("1", "Java Basics", "Alice");
+        bookService.addBook("2", "Spring Framework", "Bob");
+        List<Book> books = bookService.getAllBooks();
+        assertEquals(2, books.size());
     }
 
 }
