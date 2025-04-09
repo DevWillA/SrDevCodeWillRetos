@@ -87,3 +87,40 @@ Libro: WillYYo (ID: 1) Autor: Will
 2025-03-17 16:45:33 [main] ERROR com.willdev.Main - El libro no tiene prestamos
 2025-03-17 16:45:37 [main] DEBUG com.willdev.Main - Salio del Menu
 2025-03-17 16:45:37 [main] INFO  com.willdev.Main - Finalizando la aplicacion
+2025-04-08 14:32:52 [main] INFO  com.willdev.Main - Iniciando la aplicacion
+2025-04-08 14:32:52 [main] INFO  com.willdev.Main - Ingreso al menu de la libreria
+2025-04-08 14:36:57 [main] INFO  com.willdev.Main - Iniciando la aplicacion
+2025-04-08 14:36:57 [main] INFO  com.willdev.Main - Ingreso al menu de la libreria
+2025-04-08 14:37:42 [main] DEBUG com.willdev.Main - Menu Usuarios
+2025-04-08 14:37:42 [main] INFO  com.willdev.Main - Ingreso al menu de usuarios
+2025-04-08 14:37:46 [main] DEBUG com.willdev.Main - Registrar Usuario
+2025-04-08 14:37:53 [main] INFO  com.willdev.Main - El id del usuario es: 1
+2025-04-08 14:37:56 [main] INFO  com.willdev.Main - El nombre del usuario es: William
+2025-04-08 14:38:04 [main] INFO  com.willdev.Main - El email del usuario es: Wi@gmail.com
+2025-04-08 14:38:04 [main] INFO  com.willdev.Main - Registrando el usuario
+2025-04-08 14:38:12 [main] DEBUG com.willdev.Main - Salio del Menu de usuarios
+2025-04-08 14:38:14 [main] DEBUG com.willdev.Main - Menu Libros
+2025-04-08 14:38:14 [main] INFO  com.willdev.Main - Ingreso al menu de libros
+2025-04-08 14:38:16 [main] DEBUG com.willdev.Main - Registrar Libro
+2025-04-08 14:38:18 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-04-08 14:38:21 [main] INFO  com.willdev.Main - El titulo del libro es: Java
+2025-04-08 14:38:29 [main] INFO  com.willdev.Main - El autor del libro es: Ora
+2025-04-08 14:38:29 [main] INFO  com.willdev.Main - Registrando el libro
+2025-04-08 14:38:38 [main] DEBUG com.willdev.Main - Salio del Menu Libros
+2025-04-08 14:38:41 [main] DEBUG com.willdev.Main - Menu Prestamos
+2025-04-08 14:38:41 [main] INFO  com.willdev.Main - Ingreso al menu de prestamos
+2025-04-08 14:38:43 [main] DEBUG com.willdev.Main - Realizar un prestamo
+2025-04-08 14:38:45 [main] INFO  com.willdev.Main - El id del usuario es: 1
+2025-04-08 14:38:47 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-04-08 14:38:47 [main] INFO  com.willdev.Main - Registrando el prestamo
+2025-04-08 14:38:47 [main] INFO  com.willdev.Main - Prestamo registrado con exito idUser 1, idBook 1
+2025-04-08 14:38:51 [main] DEBUG com.willdev.Main - Consultar un Prestamo por usuario
+2025-04-08 14:38:53 [main] INFO  com.willdev.Main - El id del usuario es: 1
+2025-04-08 14:38:53 [main] INFO  com.willdev.Main - Prestamo encontrado: Préstamo realizado el: 2025-04-08 14:38:47
+Usuario: William (ID: 1)
+Libro: Java (ID: 1) Autor: Ora
+2025-04-08 14:39:06 [main] DEBUG com.willdev.Main - Consultar un Prestamo por Libro
+2025-04-08 14:39:12 [main] INFO  com.willdev.Main - El id del libro es: 1
+2025-04-08 14:39:12 [main] INFO  com.willdev.Main - Prestamo encontrado: Préstamo realizado el: 2025-04-08 14:38:47
+Usuario: William (ID: 1)
+Libro: Java (ID: 1) Autor: Ora
